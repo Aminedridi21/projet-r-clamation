@@ -1,0 +1,38 @@
+<app-menu-dashboard></app-menu-dashboard>
+<div *ngFor="let myticket of tickets" class="ticket-container">
+    <p>Données Ticket</p>
+    <div class="ticket-item">
+      <label>numéro:</label>
+      {{myticket.id}}
+    </div>
+    <div class="ticket-item">
+      <label>déscription:</label>
+      {{myticket.description}}
+    </div>
+    <div class="ticket-item">
+      <label>image :</label>
+      {{myticket.lien_image}}
+    </div>
+    <div *ngFor="let imagePath of imagepaths">
+      <img [src]="imagePath" class="img-fluid img-thumbnail" alt="Image" style="width:700px;height:700px"/>
+      <br><br>
+    </div >
+    <div class="ticket-item">
+      <label>catégorie :</label>
+      {{myticket.id_categorie}}
+    </div>
+    <div class="ticket-item">
+      <label>état :</label>
+      {{myticket.id_etat}}
+    </div>
+    <div class="ticket-item">
+      <label>date:</label>
+      {{myticket.date_ticket}}
+    </div>
+    
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button (click)="Update_Ticket(myticket.id,3)" class="btn btn-primary me-md-2">traiter la ticket</button>
+    <button (click)="Update_Ticket(myticket.id,2)" class="btn btn-primary me-md-2">Supprimer la ticket</button>
+  </div>
+  </div>
+  

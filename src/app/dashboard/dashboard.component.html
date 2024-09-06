@@ -1,0 +1,24 @@
+<app-menu-dashboard ></app-menu-dashboard>
+<div class="items">
+   <div *ngIf=" data.length > 0" class="dashboard-box" >
+      <p class="text" c>Nunber of Tickets</p>
+      <p class="text">{{ ConvertToInt(data[0].count) + ConvertToInt(data[1].count)+ConvertToInt(data[2].count)}}</p>
+   </div>
+   <div *ngIf=" data.length > 0" class="dashboard-box">
+      <p class="text"> Tickets en attente </p>
+      <p class="text">{{ ConvertToInt(data[0].count) }}</p>
+   </div>
+   <div *ngIf=" data.length > 0" class="dashboard-box">
+      <p class="text"> Tickets annulées </p>
+      <p class="text">{{ ConvertToInt(data[1].count) }}</p>
+   </div>
+   <div *ngIf=" data.length > 0" class="dashboard-box">
+      <p class="text"> Tickets traités </p>
+      <p class="text">{{ ConvertToInt(data[2].count) }}</p>
+   </div>
+</div>
+<!--test chart-->
+<div class="chart-container" style="position: relative; height:60vh; width:120vw;margin-left:400px">
+   <canvas  id="MyChart" >{{ chart }}</canvas>
+</div>
+

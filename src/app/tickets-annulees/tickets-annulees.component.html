@@ -1,0 +1,72 @@
+<app-menu-dashboard></app-menu-dashboard>
+<form class="multiple-choice-form"[formGroup]="searchForm">
+    <label for="name">premier date:</label>
+    <input type="date" id="name" formControlName="f_date" class="input-field" >
+    <label for="name">deuxieme date:</label>
+    <input type="date" id="name" formControlName="l_date" class="input-field" >
+    <label for="country">id_categorie:</label>
+    <select id="country" name="country"  class="input-field" formControlName="id_categorie">
+      <option *ngFor="let category of categories" [value]="category.id" >{{category.Libelle}}</option>
+    </select>
+    <input type="hidden" formControlName="id_etat">
+    <button type="submit" class="submit-button" (click)="Search()">Submit</button>
+  </form>
+  
+<div *ngIf="recherche === false" class="table_div">
+    <h2 class="title">Listes des tickets annulées</h2>
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table">
+        <thead>
+            <tr>
+                <th>Numéro</th>
+                <th>Déscription</th>
+                <th>Image</th>
+                <th>Categorie</th>
+                <th>Etat</th> 
+                <th>Date</th>
+                <th>Action</th> 
+            </tr>
+    </thead>
+        <tbody>
+            <tr *ngFor="let ticket of tickets">
+                <td>{{ticket.id}}</td>
+                <td>{{ticket.description}}</td>
+                <td>{{ticket.lien_image}}</td>
+                <td>{{ticket.id_categorie}}</td>
+                <td>{{ticket.id_etat}}</td>
+                <td>{{ticket.date_ticket}}</td>
+                <td>
+                    <button (click)="Modify_Ticket(ticket.id)" class="btn">Modifier</button>
+                </td>
+                </tr>
+        </tbody>   
+    </table>
+</div>
+<div *ngIf="recherche === true">
+    <h2 class="title">Listes des tickets en attente</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Numéro</th>
+                <th>Déscription</th>
+                <th>Image</th>
+                <th>Categorie</th>
+                <th>Etat</th> 
+                <th>Date</th>
+                <th>Action</th> 
+            </tr>
+    </thead>
+        <tbody>
+            <tr *ngFor="let ticket of tickets">
+                <td>{{ticket.id}}</td>
+                <td>{{ticket.description}}</td>
+                <td>{{ticket.lien_image}}</td>
+                <td>{{ticket.id_categorie}}</td>
+                <td>{{ticket.id_etat}}</td>
+                <td>{{ticket.date_ticket}}</td>
+            </tr>
+        </tbody>   
+    </table>
+</div>
+
+
+
